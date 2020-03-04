@@ -1,0 +1,33 @@
+mat-card-content{
+    display: flex;
+}
+
+h3{
+    margin: 1rem 1rem 1rem  1rem;
+}
+
+.inputDesde, .inputHasta{
+margin: auto;
+width: 1rem;
+
+}
+mat-form-field{
+    margin-right: 2rem;
+}
+
+h1{
+    text-align: center;
+}
+.mainContainer{
+    padding: 1rem;
+}
+.gimmeSpace{
+    margin-left: 5rem;
+}
+.gimmeMoreSpace{
+    margin-left: 31rem;
+}
+table{
+    width: 100%;
+}
+

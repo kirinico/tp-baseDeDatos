@@ -1,0 +1,44 @@
+<app-toolbar [title]="title" [icon]="'get_app'"></app-toolbar>
+<mat-form-field appearance="outline">
+  <mat-label>Filtrado por nombre</mat-label>
+  <input matInput placeholder="EJ: Killer queeen" autofocus #nameDownload [(ngModel)]="download.titulo">
+</mat-form-field>
+
+<button class="buttonBuscar" mat-flat-button color="primary" (click)="filterDownload(nameDownload)" [disabled]="cantFilter()">Buscar</button>
+
+
+<mat-table [dataSource]="downloads" class="mat-elevation-z8">
+  <!-- Position Column -->
+  <ng-container matColumnDef="title">
+    <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+    <mat-cell *matCellDef="let dowload"> {{dowload.titulo}} </mat-cell>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="extension">
+    <mat-header-cell *matHeaderCellDef> Extension </mat-header-cell>
+    <mat-cell *matCellDef="let dowload "> {{dowload.extension_archivo}} </mat-cell>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="fecha">
+    <mat-header-cell *matHeaderCellDef> Fecha Descargado </mat-header-cell>
+    <mat-cell *matCellDef="let dowload ">
+      {{getDate(dowload)}}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="action">
+    <mat-header-cell *matHeaderCellDef> Accion </mat-header-cell>
+    <mat-cell *matCellDef="let dowload ">
+      <div class="deleteAndEdit">
+        <button mat-raised-button color="primary" [routerLink]="['/home/descargas/encuesta',dowload.id_descarga,dowload.titulo]"
+        matTooltip="Gestion de encuesta">
+          <i class="material-icons">create</i>
+        </button>
+      </div>
+    </mat-cell>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
